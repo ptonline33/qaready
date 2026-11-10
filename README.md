@@ -4,7 +4,9 @@
 
 Built as a sister app to DeskReady, but deeper: a structured curriculum rather than a course library, plus a roadmap, quizzes, glossary/flashcards, portfolio projects, a resource toolkit, and a full career/interview kit.
 
-**Source:** <https://github.com/ptonline33/qaready> · **Hosted on Vercel** (the `main` branch deploys automatically via the connected GitHub repo).
+**Live:** <https://ptonline33.github.io/qaready/> · **Source:** <https://github.com/ptonline33/qaready>
+
+Hosted on GitHub Pages (served verbatim via `.nojekyll`). The repo is also connected to a Vercel project for Git-based deploys.
 
 ## Run it
 
