@@ -4,9 +4,9 @@
 
 Built as a sister app to DeskReady, but deeper: a structured curriculum rather than a course library, plus a roadmap, quizzes, glossary/flashcards, portfolio projects, a resource toolkit, and a full career/interview kit.
 
-**Live:** <https://ptonline33.github.io/qaready/> · **Source:** <https://github.com/ptonline33/qaready>
+**Live:** <https://qaready.vercel.app/> (Vercel) · <https://ptonline33.github.io/qaready/> (GitHub Pages) · **Source:** <https://github.com/ptonline33/qaready>
 
-Hosted on GitHub Pages (served verbatim via `.nojekyll`). The repo is also connected to a Vercel project for Git-based deploys.
+Both hosts deploy automatically from `main`. GitHub Pages serves the repository root verbatim via `.nojekyll`; Vercel uses the staged `public/` build output.
 
 Vercel's static builder needs an output directory, so `npm run build` regenerates `data/content.js` and stages a `public/` directory of the PWA assets. `public/` is a gitignored build artefact — GitHub Pages keeps serving the repository root, so the same source files work on both hosts. `vercel.json` pins `buildCommand`, `outputDirectory` and the cache/security headers.
 
