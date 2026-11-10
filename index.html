@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>QAReady — Service Desk → Software QA Analyst</title>
+  <meta name="description" content="A complete 24-week, from-scratch roadmap to become a Software QA Analyst: 20 courses, 110 lessons, interactive exercises, quizzes, glossary, portfolio projects and interview prep. Works offline.">
+  <meta name="theme-color" content="#0a1020">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="QAReady">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="night">
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <!-- ---------------- Sidebar ---------------- -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#/dashboard">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="34" height="34"><rect width="64" height="64" rx="14" fill="url(#qg)"/><defs><linearGradient id="qg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M16 33 L27 45 L49 20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="15" r="3" fill="#fff"/></svg>
+        </span>
+        <span class="brand-text"><strong>QAReady</strong><small>Service Desk → QA Analyst</small></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <p class="nav-label">LEARN</p>
+        <a class="nav-item" href="#/dashboard" data-route="dashboard"><span class="ni">◈</span> Dashboard</a>
+        <a class="nav-item" href="#/roadmap" data-route="roadmap"><span class="ni">▤</span> 24-week roadmap</a>
+        <a class="nav-item" href="#/courses" data-route="courses"><span class="ni">▦</span> Courses</a>
+        <a class="nav-item" href="#/plans" data-route="plans"><span class="ni">▧</span> Study plans</a>
+        <p class="nav-label">PRACTISE</p>
+        <a class="nav-item" href="#/quizzes" data-route="quizzes"><span class="ni">✓</span> Quizzes</a>
+        <a class="nav-item" href="#/glossary" data-route="glossary"><span class="ni">Ａ</span> Glossary &amp; cards</a>
+        <p class="nav-label">BUILD</p>
+        <a class="nav-item" href="#/portfolio" data-route="portfolio"><span class="ni">◫</span> Portfolio projects</a>
+        <a class="nav-item" href="#/toolkit" data-route="toolkit"><span class="ni">⊞</span> Toolkit &amp; courses</a>
+        <p class="nav-label">LAUNCH</p>
+        <a class="nav-item" href="#/career" data-route="career"><span class="ni">➜</span> Career &amp; interviews</a>
+        <a class="nav-item" href="#/settings" data-route="settings"><span class="ni">⚙</span> Settings</a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="ring" id="sidebarRing"><span id="sidebarPct">0%</span></div>
+        <div class="sidebar-foot-text">
+          <strong id="sidebarLessons">0 / 0 lessons</strong>
+          <small id="sidebarExercises">0 exercises solved</small>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="scrim" hidden></div>
+
+    <!-- ---------------- Main ---------------- -->
+    <div class="main-col">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+        <div class="crumb" id="crumb">Dashboard</div>
+        <div class="top-actions">
+          <button class="pill search-btn" id="searchBtn" type="button" title="Search (Ctrl+K)">⌕ <span>Search</span></button>
+          <div class="read-tools" id="readTools">
+            <button class="pill pill-icon" id="smallerBtn" type="button" aria-label="Smaller text" title="Smaller text">A&minus;</button>
+            <button class="pill pill-icon" id="biggerBtn" type="button" aria-label="Larger text" title="Larger text">A+</button>
+            <label class="pick"><span>Font</span>
+              <select id="fontSelect">
+                <option value="atkinson">Atkinson (default)</option>
+                <option value="opendyslexic">OpenDyslexic</option>
+                <option value="lexend">Lexend</option>
+                <option value="literata">Literata (serif)</option>
+                <option value="lora">Lora (serif)</option>
+                <option value="dancing">Dancing Script</option>
+              </select>
+            </label>
+            <label class="pick"><span>Theme</span>
+              <select id="themeSelect">
+                <option value="night">Night (default)</option>
+                <option value="sepia">Sepia</option>
+                <option value="light">Light</option>
+                <option value="contrast">High contrast</option>
+              </select>
+            </label>
+          </div>
+          <button class="pill install-btn" id="installBtn" type="button" hidden>Install app</button>
+          <span class="net-dot" id="netDot" title="Online"></span>
+        </div>
+      </header>
+
+      <main id="view" tabindex="-1" aria-live="polite"></main>
+
+      <footer class="foot">
+        <span>QAReady · works offline · your progress stays on this device</span>
+        <span id="footMeta"></span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ---------------- Search overlay ---------------- -->
+  <div class="overlay" id="searchOverlay" hidden>
+    <div class="overlay-card search-card" role="dialog" aria-modal="true" aria-label="Search">
+      <div class="search-row">
+        <span class="search-glyph">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search lessons, terms, courses, resources…" autocomplete="off" spellcheck="false">
+        <button class="icon-btn" id="searchClose" type="button" aria-label="Close search">✕</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+      <p class="search-tip">Tip: press <kbd>Ctrl</kbd>+<kbd>K</kbd> anywhere to search · <kbd>Esc</kbd> to close</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+
+  <script src="vendor/marked.js"></script>
+  <script src="data/content.js"></script>
+  <script src="js/sql-engine.js"></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

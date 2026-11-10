@@ -1,0 +1,13 @@
+{
+  "name": "qaready",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QAReady — a 24-week PWA roadmap from Service Desk Technician to Software QA Analyst",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "serve": "npx --yes serve -l 8080 .",
+    "build": "python3 build_content.py",
+    "icons": "python3 generate_icons.py",
+    "check": "python3 build_content.py && node --check js/app.js && node --check js/sql-engine.js"
+  }
+}
