@@ -4,6 +4,8 @@
 
 Built as a sister app to DeskReady, but deeper: a structured curriculum rather than a course library, plus a roadmap, quizzes, glossary/flashcards, portfolio projects, a resource toolkit, and a full career/interview kit.
 
+**Source:** <https://github.com/ptonline33/qaready> · **Hosted on Vercel** (the `main` branch deploys automatically via the connected GitHub repo).
+
 ## Run it
 
 PWAs need to be served over `http://localhost` or HTTPS (the service worker won't register from `file://`).
