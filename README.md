@@ -8,6 +8,8 @@ Built as a sister app to DeskReady, but deeper: a structured curriculum rather t
 
 Hosted on GitHub Pages (served verbatim via `.nojekyll`). The repo is also connected to a Vercel project for Git-based deploys.
 
+Vercel's static builder needs an output directory, so `npm run build` regenerates `data/content.js` and stages a `public/` directory of the PWA assets. `public/` is a gitignored build artefact — GitHub Pages keeps serving the repository root, so the same source files work on both hosts. `vercel.json` pins `buildCommand`, `outputDirectory` and the cache/security headers.
+
 ## Run it
 
 PWAs need to be served over `http://localhost` or HTTPS (the service worker won't register from `file://`).
