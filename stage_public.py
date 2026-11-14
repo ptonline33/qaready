@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "public"
 
 FILES = ["index.html", "styles.css", "manifest.webmanifest", "sw.js", ".nojekyll"]
-DIRS = ["js", "data", "fonts", "icons", "vendor"]
+DIRS = ["js", "data", "fonts", "icons", "vendor", "audio"]
 
 
 def main():

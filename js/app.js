@@ -30,8 +30,35 @@
     dashboard: "Dashboard", roadmap: "24-week roadmap", courses: "Courses",
     plans: "Study plans", quizzes: "Quizzes", glossary: "Glossary & flashcards",
     portfolio: "Portfolio projects", toolkit: "Toolkit & courses",
-    career: "Career & interviews", settings: "Settings",
+    career: "Career & interviews", settings: "Settings", audio: "Audiobooks",
   };
+
+  /* Full-length audiobooks built from this curriculum, narrated by Andrew
+   * (en-US-AndrewNeural). Files ship with the app; see sw.js for Range-aware
+   * offline caching. */
+  const AUDIO_BOOKS = [
+    {
+      id: "qaready-plan",
+      title: "The QAReady Plan",
+      subtitle: "Twenty-four weeks from the service desk to a QA Analyst role",
+      description: "The complete study plan as an audiobook: the seven phases, the weekly rhythm, the portfolio projects, repositioning your support experience, interviews, certification and the first ninety days. Fifteen chapters.",
+      file: "audio/qaready-plan.mp3",
+      chapters: 15,
+      duration: "23 min",
+      color: "#7b5cff",
+    },
+    {
+      id: "istqb-ctfl",
+      title: "ISTQB Foundation Level",
+      subtitle: "The complete CTFL version 4.0 audio course",
+      description: "A full narrated course for the ISTQB Certified Tester Foundation Level: all six syllabus chapters, the seven principles, static testing, black-box and white-box techniques, test management and tool support, plus worked examples, practice questions and exam strategy. Thirty-two chapters.",
+      file: "audio/istqb-ctfl.mp3",
+      chapters: 32,
+      duration: "59 min",
+      color: "#3ddc84",
+    },
+  ];
+  const READALONG_URL = "https://readalong-virid.vercel.app/";
 
   /* ---------------- indexes ---------------- */
   const courseById = Object.fromEntries(D.courses.map((c) => [c.id, c]));
@@ -223,6 +250,7 @@
       case "toolkit": setCrumb("toolkit"); view.innerHTML = viewToolkit(); break;
       case "portfolio": setCrumb("portfolio"); view.innerHTML = viewPortfolio(); break;
       case "career": setCrumb("career"); view.innerHTML = viewCareer(); break;
+      case "audio": setCrumb("audio"); view.innerHTML = viewAudiobooks(); break;
       case "plans": setCrumb("plans"); view.innerHTML = viewPlans(); break;
       case "plan": {
         const p = D.plans.find((x) => x.id === arg);
@@ -1009,6 +1037,28 @@
       <div style="margin-bottom:12px">${backLink("#/plans", "All plans")}</div>
       <div class="page-head"><p class="eyebrow">${esc(p.subtitle)}</p><h1>${esc(p.title)}</h1><p>${esc(p.description)}</p></div>
       <article class="card article-card md-body">${md(p.body)}</article>`;
+  }
+
+  /* ======================================================================
+     AUDIOBOOKS
+     ====================================================================== */
+  function viewAudiobooks() {
+    return `
+      <div class="page-head"><p class="eyebrow">Narrated by Andrew</p><h1>Audiobooks</h1><p>Two full-length audiobooks built from the QAReady curriculum, read in a natural human voice. Press play here, or open the Readalong library for read-along highlighting and the EPUB text.</p></div>
+      <div class="audio-list">${AUDIO_BOOKS.map((b) => `
+        <article class="card audio-card" style="border-top:4px solid ${esc(b.color)}">
+          <div class="audio-top">
+            <div><p class="eyebrow">${esc(b.subtitle)}</p><h2>${esc(b.title)}</h2></div>
+            <span class="badge acc">${b.chapters} chapters</span>
+          </div>
+          <p class="small muted">${esc(b.description)}</p>
+          <audio controls preload="none" src="${esc(b.file)}"></audio>
+          <div class="audio-foot">
+            <span class="small muted">Andrew (natural neural voice) &middot; ${esc(b.duration)}</span>
+            <a class="btn sm" href="${esc(READALONG_URL)}" target="_blank" rel="noopener">Open Readalong library &rarr;</a>
+          </div>
+        </article>`).join("")}</div>
+      <p class="small muted" style="margin-top:18px;max-width:74ch">Audio is stored with the app. The service worker supports seeking and keeps each book available offline after the first play. The same two books, with per-chapter MP3s and EPUB text, are in the Readalong library.</p>`;
   }
 
   /* ======================================================================
